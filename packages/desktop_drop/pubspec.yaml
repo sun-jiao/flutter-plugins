@@ -36,3 +36,5 @@ flutter:
       web:
         pluginClass: DesktopDropWeb
         fileName: desktop_drop_web.dart
+      ios:
+        pluginClass: DesktopDropPlugin
