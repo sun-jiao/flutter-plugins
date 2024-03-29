@@ -6,4 +6,6 @@ class Platform {
   static bool get isWeb => true;
 
   static bool get isAndroid => false;
+
+  static bool get isIOS => false;
 }

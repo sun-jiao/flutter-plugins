@@ -8,4 +8,6 @@ class Platform {
   static bool get isWeb => false;
 
   static bool get isAndroid => io.Platform.isAndroid;
+
+  static bool get isIOS => io.Platform.isIOS;
 }
