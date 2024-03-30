@@ -44,7 +44,7 @@ public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegat
         let viewId: Int64
         let messenger: FlutterBinaryMessenger
         let channel: FlutterMethodChannel
-        
+    
         init(
             frame: CGRect,
             viewIdentifier viewId: Int64,
@@ -58,6 +58,8 @@ public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegat
             self.channel = channel
             
             super.init()
+
+            channel.setMethodCallHandler(handle)
             let dropInteraction = UIDropInteraction(delegate: self)
             _view.addInteraction(dropInteraction)
         }
