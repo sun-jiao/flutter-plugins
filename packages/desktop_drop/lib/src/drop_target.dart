@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 import 'channel.dart';
@@ -205,6 +206,27 @@ class _DropTargetState extends State<DropTarget> {
 
   @override
   Widget build(BuildContext context) {
+    if (Platform.isIOS) {
+      // This is used in the platform side to register the view.
+      const String viewType = 'DropTarget';
+      // Pass parameters to the platform side.
+      final Map<String, dynamic> creationParams = <String, dynamic>{};
+
+      return Stack(
+        children: [
+          widget.child,
+          IgnorePointer(
+            child: Positioned.fill(child: UiKitView(
+              viewType: viewType,
+              layoutDirection: TextDirection.ltr,
+              creationParams: creationParams,
+              creationParamsCodec: const StandardMessageCodec(),
+            )),
+          )
+        ],
+      );
+    }
+
     return widget.child;
   }
 }

@@ -39,6 +39,7 @@ public class DropTargetFactory: NSObject, FlutterPlatformViewFactory{
         return FlutterStandardMessageCodec.sharedInstance()
     }
 }
+
 public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegate {
     private var _view: UIView
     let viewId: Int64
@@ -58,7 +59,7 @@ public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegat
         self.channel = channel
         
         super.init()
-        
+
         channel.setMethodCallHandler { [weak self] (call, result) in
             self?.handle(call, result: result)
         }
