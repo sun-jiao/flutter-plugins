@@ -59,7 +59,10 @@ public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegat
         
         super.init()
         
-        channel.setMethodCallHandler(handle)
+        channel.setMethodCallHandler { [weak self] (call, result) in
+            self?.handle(call, result: result)
+        }
+        
         let dropInteraction = UIDropInteraction(delegate: self)
         _view.addInteraction(dropInteraction)
     }
