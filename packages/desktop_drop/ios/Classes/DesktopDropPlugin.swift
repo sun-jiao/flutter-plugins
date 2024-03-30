@@ -64,6 +64,7 @@ public class DropTarget: NSObject, FlutterPlatformView, UIDropInteractionDelegat
         }
         
         let dropInteraction = UIDropInteraction(delegate: self)
+        _view.isUserInteractionEnabled = true
         _view.addInteraction(dropInteraction)
     }
     
