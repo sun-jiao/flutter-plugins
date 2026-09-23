@@ -157,7 +157,7 @@ class DesktopDrop {
         _notifyEvent(DropDoneEvent(
           location: Offset(offset[0], offset[1]),
           files: paths.map((e) => DropItemFile(e)).toList(),
-          rawText: text,
+          rawText: call.arguments.length > 2 ? call.arguments[2] as String : text,
         ));
         break;
       case "performOperation_portal":
